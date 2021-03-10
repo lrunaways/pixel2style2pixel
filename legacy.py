@@ -57,7 +57,7 @@ def load_network_pkl(f, force_fp16=False):
                 new = type(old)(**kwargs).eval().requires_grad_(False)
                 misc.copy_params_and_buffers(old, new, require_all=True)
                 data[key] = new
-    return data
+    return G
 
 #----------------------------------------------------------------------------
 
