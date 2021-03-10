@@ -12,6 +12,6 @@ dataset_paths = {
 
 model_paths = {
 	'stylegan_ffhq': 'pretrained_models/stylegan2-ffhq-config-f.pt',
-	'ir_se50': 'pretrained_models/model_ir_se50.pth',
+	'ir_se50': '../networks/model_ir_se50.pth',
 	'pixel': '../networks/pixelation-003-1080.pkl'
 }
