@@ -6,8 +6,8 @@ dataset_paths = {
 	'celeba_train_segmentation': '',
 	'celeba_test_segmentation': '',
 	'ffhq': '',
-	'panel': '"my_data/pixelated panelkas p4 c-1 256x256",
-	'pixel': '"my_data/good_quality_png_256_cuts"
+	'panel': 'my_data/pixelated panelkas p4 c-1 256x256',
+	'pixel': 'my_data/good_quality_png_256_cuts'
 }
 
 model_paths = {
