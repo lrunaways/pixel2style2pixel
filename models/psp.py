@@ -9,6 +9,7 @@ from torch import nn
 from models.encoders import psp_encoders
 from models.stylegan2.model import Generator
 from configs.paths_config import model_paths
+import pickle
 
 
 def get_keys(d, name):
