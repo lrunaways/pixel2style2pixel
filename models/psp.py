@@ -9,7 +9,6 @@ from torch import nn
 from models.encoders import psp_encoders
 from models.stylegan2.model import Generator
 from configs.paths_config import model_paths
-import pickle
 
 
 def get_keys(d, name):
@@ -57,14 +56,12 @@ class pSp(nn.Module):
 				encoder_ckpt = {k: v for k, v in encoder_ckpt.items() if "input_layer" not in k}
 			self.encoder.load_state_dict(encoder_ckpt, strict=False)
 			print('Loading decoder weights from pretrained!')
-# 			ckpt = torch.load(self.opts.stylegan_weights)
-# 			self.decoder.load_state_dict(ckpt['g_ema'], strict=False)
-			with open(self.opts.stylegan_weights, 'rb') as f:
-			    self.decoder = pickle.load(f)['G_ema'].cuda()  # torch.nn.Module
+			ckpt = torch.load(self.opts.stylegan_weights)
+			self.decoder.load_state_dict(ckpt['g_ema'], strict=False)
 			if self.opts.learn_in_w:
-				self.__load_latent_avg(self.decoder, repeat=1)
+				self.__load_latent_avg(ckpt, repeat=1)
 			else:
-				self.__load_latent_avg(self.decoder, repeat=18)
+				self.__load_latent_avg(ckpt, repeat=18)
 
 	def forward(self, x, resize=True, latent_mask=None, input_code=False, randomize_noise=True,
 	            inject_latent=None, return_latents=False, alpha=None):
