@@ -365,7 +365,7 @@ class Generator(nn.Module):
             size,
             style_dim,
             n_mlp,
-            channel_multiplier=2,
+            channel_multiplier=1,
             blur_kernel=[1, 3, 3, 1],
             lr_mlp=0.01,
     ):
@@ -613,7 +613,7 @@ class ResBlock(nn.Module):
 
 
 class Discriminator(nn.Module):
-    def __init__(self, size, channel_multiplier=2, blur_kernel=[1, 3, 3, 1]):
+    def __init__(self, size, channel_multiplier=1, blur_kernel=[1, 3, 3, 1]):
         super().__init__()
 
         channels = {
